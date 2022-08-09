@@ -11,6 +11,25 @@ server.get('/', (req, res) => {
 
 });
 
+//| GET    | /api/users/:id | Returns the user object with the specified `id`.  
+//`findById` Takes an `id` 
+//and resolves to the user with that id (or null if the id does not exist).
+
+server.get(('/api/users/:id', (req, res) => {
+    Users.findById(req.params.id)
+        .then(result => {
+            if(result == null) {
+                res.status(404).json({ message: "The user with the specified ID does not exist" })
+            } else {
+                res.status(200).json(result)
+            }
+         })
+         .catch(() => {
+            res.status(500).json({ message: "The user information could not be retrieved" })
+     });
+}));
+
+
 server.get('/api/users', (req, res) => {
     Users.find()
     .then(result => {
