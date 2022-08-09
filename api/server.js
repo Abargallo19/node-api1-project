@@ -43,7 +43,12 @@ server.get('/api/users', (req, res) => {
 server.post('/api/users', (req, res) => {
     Users.insert(req.body)
     .then(result => {
-        res.status(201).json(result);
+        if(result == null) {
+            res.status(400).json({ message: "Please provide name and bio for the user" })
+        } else {
+            res.status(201).json(result);
+        }
+            
     })
     .catch(() => {
         res.status(500).json({message: "Please provide name and bio for the user" })
