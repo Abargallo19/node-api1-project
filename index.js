@@ -5,4 +5,7 @@ const port = 9000;
 // START YOUR SERVER HERE
 
 console.log("Testing for compliance")
-server.listen(port, "listening on the port 9000")
+
+server.listen(port, () => {
+    console.log("listening on the port 9000");
+});
