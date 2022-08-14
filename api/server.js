@@ -76,6 +76,7 @@ server.delete('/api/users/:id', (req, res) => {
     .catch((err) => {
         res.status(500).json({ message: "The user could not be removed"})
     })
+})
 
     server.put("/api/users/:id", (req, res) => {
         Users.update(req.params.id, req.body)
@@ -95,6 +96,6 @@ server.delete('/api/users/:id', (req, res) => {
             })
     })
    
-})
+
 
 module.exports = server; // EXPORT YOUR SERVER instead of {}
